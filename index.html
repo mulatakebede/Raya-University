@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liaison Office Guest House - Complete Survey Report 2018</title>
+    <style>
+        :root {
+            --navy: #1F3864;
+            --blue: #4472C4;
+            --light-blue: #9DC3E6;
+            --green: #63BE7B;
+            --light-green: #A9D18E;
+            --yellow: #FFEB84;
+            --orange: #F4B183;
+            --red: #E06666;
+            --grey: #595959;
+            --light-grey: #f0f2f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--light-grey); 
+            color: #333;
+            line-height: 1.6;
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--navy), #2a4a7a);
+            color: white;
+            padding: 35px 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 30px; font-weight: 700; margin-bottom: 5px; }
+        .header .subtitle { font-size: 16px; opacity: 0.85; }
+        .header .date { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--navy);
+        }
+        .stat-card .number { font-size: 34px; font-weight: 700; color: var(--navy); }
+        .stat-card .label { font-size: 12px; color: #888; margin-top: 3px; }
+        .stat-card .number.green { color: var(--green); }
+        .stat-card .number.orange { color: var(--orange); }
+        .stat-card .number.blue { color: var(--blue); }
+        .stat-card .number.red { color: var(--red); }
+        
+        /* Section */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-size: 22px;
+            color: var(--navy);
+            border-bottom: 3px solid var(--light-blue);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 17px;
+            color: var(--navy);
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+        .section h4 {
+            font-size: 14px;
+            color: var(--grey);
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        /* Charts Grid */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chart-grid .full-width { grid-column: 1 / -1; }
+        .chart-card {
+            background: #fafbfc;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e8ecf0;
+        }
+        .chart-card img { width: 100%; height: auto; border-radius: 4px; }
+        .chart-card .caption {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 8px;
+        }
+        
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 10px 0 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        table thead th {
+            background: var(--navy);
+            color: white;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        table tbody td {
+            padding: 7px 12px;
+            border-bottom: 1px solid #e8ecf0;
+        }
+        table tbody tr:hover {
+            background: #f5f7fa;
+        }
+        table tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+        table tbody tr:nth-child(even):hover {
+            background: #f0f2f5;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-green { background: var(--green); color: white; }
+        .badge-blue { background: var(--light-blue); color: var(--navy); }
+        .badge-orange { background: var(--orange); color: #333; }
+        .badge-red { background: var(--red); color: white; }
+        
+        /* Text content */
+        .report-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #444;
+        }
+        .report-text ul {
+            padding-left: 25px;
+            margin: 8px 0;
+        }
+        .report-text ul li { margin-bottom: 4px; }
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 4px solid var(--navy);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 12px;
+            padding: 25px 0 10px 0;
+            border-top: 1px solid #e8ecf0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media print {
+            .header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            table thead th { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .stat-card { border: 1px solid #ddd; }
+        }
+        
+        /* Tabs for frequency tables */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0 15px 0;
+        }
+        .tab-btn {
+            padding: 6px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { background: #f0f2f5; }
+        .tab-btn.active {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <h1>🏨 Liaison Office Guest House</h1>
+            <div class="subtitle">Guest Satisfaction Survey Report 2018</div>
+            <div class="date">Report Generated: June 30, 2026 at 11:03 PM</div>
+        </div>
+        
+        <!-- ===== KEY METRICS ===== -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number green">4.38</div>
+                <div class="label">Overall Satisfaction (out of 5)</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue">96.6%</div>
+                <div class="label">Would Return</div>
+            </div>
+            <div class="stat-card">
+                <div class="number blue">98.4%</div>
+                <div class="label">Would Recommend</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">65</div>
+                <div class="label">Total Respondents</div>
+            </div>
+            <div class="stat-card">
+                <div class="number orange">14</div>
+                <div class="label">Service Areas Evaluated</div>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 1: EXECUTIVE SUMMARY ===== -->
+        <div class="section">
+            <h2>1. Executive Summary</h2>
+            <div class="report-text">
+                <p>A guest satisfaction survey was conducted at the Liaison Office Guest House to assess the quality of service provided to visitors. A total of <strong>65</strong> guests completed the survey, rating their experience across reception, accommodation, support services, and overall satisfaction.</p>
+                <br>
+                <p>Overall, guests reported a high level of satisfaction, with an average score of <strong>4.38 out of 5</strong> across all measured service dimensions. The strongest-performing areas were:</p>
+                <ul>
+                    <li><strong>Environmental Safety & Security</strong></li>
+                    <li><strong>Staff Respect & Courtesy</strong></li>
+                    <li><strong>Reception Speed</strong></li>
+                </ul>
+                <p>while <strong>water and bathroom service</strong> received the most varied feedback and represents the clearest opportunity for improvement.</p>
+                <br>
+                <p><strong>96.6%</strong> of respondents indicated they would return to the guesthouse, and <strong>98.4%</strong> said they would recommend it to others — both strong indicators of guest loyalty and satisfaction.</p>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 2: METHODOLOGY ===== -->
+        <div class="section">
+            <h2>2. Methodology</h2>
+            <div class="report-text">
+                <p>Data was collected through a structured, bilingual (Amharic/English) paper-based questionnaire administered to guests of the Liaison Office Guest House. Responses were later digitized and analyzed.</p>
+                <br>
+                <ul>
+                    <li><strong>Sample size:</strong> 65 respondents</li>
+                    <li><strong>Survey instrument:</strong> 18-item structured questionnaire across six sections</li>
+                    <li><strong>Rating scale:</strong> 5-point Likert scale (1 = Very dissatisfied/Very low, 5 = Very satisfied/Very good)</li>
+                    <li><strong>Data collection method:</strong> Manual paper survey, later digitized for analysis</li>
+                </ul>
+                <br>
+                <div class="highlight-box">
+                    <strong>Note on scale:</strong> Questions 1-12 use satisfaction scale (ሀ=Very Satisfied → ሠ=Very Dissatisfied).<br>
+                    Questions 13 and 16 use REVERSED quality scale (ሀ=Very Low → ሠ=Very Good).
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 3: RESPONDENT PROFILE ===== -->
+        <div class="section">
+            <h2>3. Respondent Profile</h2>
+            
+            <div class="chart-grid">
+                <div class="chart-card full-width">
+                    <img src="charts/chart_visit_profile.png" alt="Visit Profile">
+                    <div class="caption">Purpose of Visit and Length of Stay</div>
+                </div>
+            </div>
+            
+            <h3>3.1 Purpose of Visit</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Purpose</th><th>Count</th><th>Percent</th></tr></thead>
+                    <tbody>
+                        <tr><td>Training</td><td>37</td><td>56.9%</td></tr>
+                        <tr><td>Work</td><td>21</td><td>32.3%</td></tr>
+                        <tr><td>Meeting</td><td>4</td><td>6.2%</td></tr>
+                        <tr><td>Other</td><td>2</td><td>3.1%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>3.2 Length of Stay</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Duration</th><th>Count</th><th>Percent</th></tr></thead>
+                    <tbody>
+                        <tr><td>More than 3 days</td><td>53</td><td>81.5%</td></tr>
+                        <tr><td>2-3 days</td><td>9</td><td>13.8%</td></tr>
+                        <tr><td>1 day</td><td>3</td><td>4.6%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 4: OVERALL SATISFACTION ===== -->
+        <div class="section">
+            <h2>4. Overall Satisfaction</h2>
+
+            <div class="report-text">
+                <p>The overall service satisfaction score averages <strong>4.05 out of 5.0</strong>.</p>
+            </div>
+            
+            <h3>4.1 Distribution of Overall Service Ratings</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Rating</th><th>Count</th><th>Percent</th></tr></thead>
+                    <tbody>
+                        <tr><td>Very Good</td><td>28</td><td>43.1%</td></tr>
+                        <tr><td>Good</td><td>22</td><td>33.8%</td></tr>
+                        <tr><td>Medium</td><td>9</td><td>13.8%</td></tr>
+                        <tr><td>Low</td><td>2</td><td>3.1%</td></tr>
+                        <tr><td>Very Low</td><td>4</td><td>6.2%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- ===== SECTION 5: VISUALIZATIONS ===== -->
+        <div class="section">
+            <h2>5. Visualizations</h2>
+            
+            <div class="chart-grid">
+                <div class="chart-card full-width">
+                    <img src="charts/chart_means.png" alt="Mean Scores">
+                    <div class="caption">Mean Satisfaction Scores by Service Area</div>
+                </div>
+                <div class="chart-card full-width">
+                    <img src="charts/chart_distribution.png" alt="Distribution">
+                    <div class="caption">Distribution of Ratings for Key Service Areas</div>
+                </div>
+                <div class="chart-card full-width">
+                    <img src="charts/chart_loyalty.png" alt="Loyalty">
+                    <div class="caption">Loyalty Indicators</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 6: SERVICE AREA ANALYSIS ===== -->
+        <div class="section">
+            <h2>6. Service Area Analysis</h2>
+            
+            <h3>6.1 Summary Statistics</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Service Area</th><th>N</th><th>Mean</th><th>Median</th><th>Std Dev</th><th>Min</th><th>Max</th></tr></thead>
+                    <tbody>
+                        <tr><td>Environmental Safety & Security <span class="badge badge-green">High</span></td><td>65</td><td>4.74</td><td>5.0</td><td>0.59</td><td>2</td><td>5</td></tr>
+                        <tr><td>Staff Respect & Courtesy <span class="badge badge-green">High</span></td><td>65</td><td>4.66</td><td>5.0</td><td>0.71</td><td>2</td><td>5</td></tr>
+                        <tr><td>Reception Speed <span class="badge badge-green">High</span></td><td>65</td><td>4.65</td><td>5.0</td><td>0.67</td><td>2</td><td>5</td></tr>
+                        <tr><td>Hospitality <span class="badge badge-green">High</span></td><td>65</td><td>4.63</td><td>5.0</td><td>0.65</td><td>3</td><td>5</td></tr>
+                        <tr><td>Information Clarity <span class="badge badge-green">High</span></td><td>65</td><td>4.62</td><td>5.0</td><td>0.63</td><td>3</td><td>5</td></tr>
+                        <tr><td>Electricity & Basic Services <span class="badge badge-blue">Good</span></td><td>65</td><td>4.43</td><td>5.0</td><td>0.85</td><td>2</td><td>5</td></tr>
+                        <tr><td>Wi-Fi & Communication <span class="badge badge-blue">Good</span></td><td>64</td><td>4.42</td><td>5.0</td><td>1.02</td><td>1</td><td>5</td></tr>
+                        <tr><td>Problem Resolution Speed <span class="badge badge-blue">Good</span></td><td>64</td><td>4.41</td><td>4.5</td><td>0.66</td><td>3</td><td>5</td></tr>
+                        <tr><td>Room Cleanliness <span class="badge badge-blue">Good</span></td><td>65</td><td>4.35</td><td>5.0</td><td>0.78</td><td>2</td><td>5</td></tr>
+                        <tr><td>Cleaning Service <span class="badge badge-blue">Good</span></td><td>65</td><td>4.28</td><td>5.0</td><td>0.98</td><td>1</td><td>5</td></tr>
+                        <tr><td>Bed & Furniture Quality <span class="badge badge-blue">Good</span></td><td>64</td><td>4.20</td><td>4.0</td><td>0.80</td><td>2</td><td>5</td></tr>
+                        <tr><td>Liaison Staff Capacity <span class="badge badge-blue">Good</span></td><td>60</td><td>4.08</td><td>4.0</td><td>1.08</td><td>1</td><td>5</td></tr>
+                        <tr><td>Overall Service <span class="badge badge-blue">Good</span></td><td>65</td><td>4.05</td><td>4.0</td><td>1.12</td><td>1</td><td>5</td></tr>
+                        <tr><td>Water & Bathroom Service <span class="badge badge-orange">Medium</span></td><td>65</td><td>3.78</td><td>4.0</td><td>1.33</td><td>1</td><td>5</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="flex-between">
+                <div class="highlight-box" style="flex:1;margin-right:10px;">
+                    <strong>🏆 Top Performing Areas:</strong><br>
+                    • Environmental Safety & Security: 4.74/5.0<br>
+                    • Staff Respect & Courtesy: 4.66/5.0<br>
+                    • Reception Speed: 4.65/5.0<br>
+                </div>
+                <div class="highlight-box" style="flex:1;background:#fff5f5;border-left-color:var(--red);">
+                    <strong>⚠️ Areas for Improvement:</strong><br>
+                    • Liaison Staff Capacity: 4.08/5.0<br>
+                    • Overall Service: 4.05/5.0<br>
+                    • Water & Bathroom Service: 3.78/5.0<br>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== SECTION 7: FREQUENCY TABLES ===== -->
+        <div class="section">
+            <h2>7. Frequency Tables</h2>
+            <p style="color:#666;font-size:13px;margin-bottom:10px;">Click a tab to view frequency distribution for each question.</p>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('tab0')">Reception Speed</button>
+                <button class="tab-btn " onclick="showTab('tab1')">Staff Respect & Courtesy</button>
+                <button class="tab-btn " onclick="showTab('tab2')">Information Clarity</button>
+                <button class="tab-btn " onclick="showTab('tab3')">Hospitality</button>
+                <button class="tab-btn " onclick="showTab('tab4')">Room Cleanliness</button>
+                <button class="tab-btn " onclick="showTab('tab5')">Bed & Furniture Quality</button>
+                <button class="tab-btn " onclick="showTab('tab6')">Water & Bathroom Service</button>
+                <button class="tab-btn " onclick="showTab('tab7')">Electricity & Basic Services</button>
+                <button class="tab-btn " onclick="showTab('tab8')">Environmental Safety & Security</button>
+                <button class="tab-btn " onclick="showTab('tab9')">Cleaning Service</button>
+                <button class="tab-btn " onclick="showTab('tab10')">Wi-Fi & Communication</button>
+                <button class="tab-btn " onclick="showTab('tab11')">Problem Resolution Speed</button>
+                <button class="tab-btn " onclick="showTab('tab12')">Overall Service</button>
+                <button class="tab-btn " onclick="showTab('tab13')">Liaison Staff Capacity</button>
+                <button class="tab-btn " onclick="showTab('tab14')">visit_purpose</button>
+                <button class="tab-btn " onclick="showTab('tab15')">stay_duration</button>
+            </div>
+            <div id="tab0" class="tab-content active">
+                <h4>Reception Speed</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>48</td><td>73.8%</td><td>73.8%</td></tr>
+                            <tr><td>Satisfied</td><td>12</td><td>18.5%</td><td>18.5%</td></tr>
+                            <tr><td>Neutral</td><td>4</td><td>6.2%</td><td>6.2%</td></tr>
+                            <tr><td>Dissatisfied</td><td>1</td><td>1.5%</td><td>1.5%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab1" class="tab-content ">
+                <h4>Staff Respect & Courtesy</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>50</td><td>76.9%</td><td>76.9%</td></tr>
+                            <tr><td>Satisfied</td><td>10</td><td>15.4%</td><td>15.4%</td></tr>
+                            <tr><td>Neutral</td><td>3</td><td>4.6%</td><td>4.6%</td></tr>
+                            <tr><td>Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab2" class="tab-content ">
+                <h4>Information Clarity</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>45</td><td>69.2%</td><td>69.2%</td></tr>
+                            <tr><td>Satisfied</td><td>15</td><td>23.1%</td><td>23.1%</td></tr>
+                            <tr><td>Neutral</td><td>5</td><td>7.7%</td><td>7.7%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab3" class="tab-content ">
+                <h4>Hospitality</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>47</td><td>72.3%</td><td>72.3%</td></tr>
+                            <tr><td>Satisfied</td><td>12</td><td>18.5%</td><td>18.5%</td></tr>
+                            <tr><td>Neutral</td><td>6</td><td>9.2%</td><td>9.2%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab4" class="tab-content ">
+                <h4>Room Cleanliness</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>34</td><td>52.3%</td><td>52.3%</td></tr>
+                            <tr><td>Satisfied</td><td>21</td><td>32.3%</td><td>32.3%</td></tr>
+                            <tr><td>Neutral</td><td>9</td><td>13.8%</td><td>13.8%</td></tr>
+                            <tr><td>Dissatisfied</td><td>1</td><td>1.5%</td><td>1.5%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab5" class="tab-content ">
+                <h4>Bed & Furniture Quality</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>27</td><td>41.5%</td><td>42.2%</td></tr>
+                            <tr><td>Satisfied</td><td>24</td><td>36.9%</td><td>37.5%</td></tr>
+                            <tr><td>Neutral</td><td>12</td><td>18.5%</td><td>18.8%</td></tr>
+                            <tr><td>Missing</td><td>1</td><td>1.5%</td><td>0%</td></tr>
+                            <tr><td>Dissatisfied</td><td>1</td><td>1.5%</td><td>1.6%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab6" class="tab-content ">
+                <h4>Water & Bathroom Service</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>28</td><td>43.1%</td><td>43.1%</td></tr>
+                            <tr><td>Neutral</td><td>17</td><td>26.2%</td><td>26.2%</td></tr>
+                            <tr><td>Satisfied</td><td>11</td><td>16.9%</td><td>16.9%</td></tr>
+                            <tr><td>Very Dissatisfied</td><td>7</td><td>10.8%</td><td>10.8%</td></tr>
+                            <tr><td>Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab7" class="tab-content ">
+                <h4>Electricity & Basic Services</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>41</td><td>63.1%</td><td>63.1%</td></tr>
+                            <tr><td>Satisfied</td><td>13</td><td>20.0%</td><td>20.0%</td></tr>
+                            <tr><td>Neutral</td><td>9</td><td>13.8%</td><td>13.8%</td></tr>
+                            <tr><td>Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab8" class="tab-content ">
+                <h4>Environmental Safety & Security</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>52</td><td>80.0%</td><td>80.0%</td></tr>
+                            <tr><td>Satisfied</td><td>10</td><td>15.4%</td><td>15.4%</td></tr>
+                            <tr><td>Neutral</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                            <tr><td>Dissatisfied</td><td>1</td><td>1.5%</td><td>1.5%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab9" class="tab-content ">
+                <h4>Cleaning Service</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>34</td><td>52.3%</td><td>52.3%</td></tr>
+                            <tr><td>Satisfied</td><td>21</td><td>32.3%</td><td>32.3%</td></tr>
+                            <tr><td>Neutral</td><td>6</td><td>9.2%</td><td>9.2%</td></tr>
+                            <tr><td>Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                            <tr><td>Very Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab10" class="tab-content ">
+                <h4>Wi-Fi & Communication</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>43</td><td>66.2%</td><td>67.2%</td></tr>
+                            <tr><td>Satisfied</td><td>12</td><td>18.5%</td><td>18.8%</td></tr>
+                            <tr><td>Neutral</td><td>4</td><td>6.2%</td><td>6.2%</td></tr>
+                            <tr><td>Dissatisfied</td><td>3</td><td>4.6%</td><td>4.7%</td></tr>
+                            <tr><td>Very Dissatisfied</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                            <tr><td>Missing</td><td>1</td><td>1.5%</td><td>0%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab11" class="tab-content ">
+                <h4>Problem Resolution Speed</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Satisfied</td><td>32</td><td>49.2%</td><td>50.0%</td></tr>
+                            <tr><td>Satisfied</td><td>26</td><td>40.0%</td><td>40.6%</td></tr>
+                            <tr><td>Neutral</td><td>6</td><td>9.2%</td><td>9.4%</td></tr>
+                            <tr><td>Missing</td><td>1</td><td>1.5%</td><td>0%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab12" class="tab-content ">
+                <h4>Overall Service</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Good</td><td>28</td><td>43.1%</td><td>43.1%</td></tr>
+                            <tr><td>Good</td><td>22</td><td>33.8%</td><td>33.8%</td></tr>
+                            <tr><td>Medium</td><td>9</td><td>13.8%</td><td>13.8%</td></tr>
+                            <tr><td>Very Low</td><td>4</td><td>6.2%</td><td>6.2%</td></tr>
+                            <tr><td>Low</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab13" class="tab-content ">
+                <h4>Liaison Staff Capacity</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Very Good</td><td>26</td><td>40.0%</td><td>43.3%</td></tr>
+                            <tr><td>Good</td><td>21</td><td>32.3%</td><td>35.0%</td></tr>
+                            <tr><td>Medium</td><td>8</td><td>12.3%</td><td>13.3%</td></tr>
+                            <tr><td>Missing</td><td>5</td><td>7.7%</td><td>0%</td></tr>
+                            <tr><td>Very Low</td><td>3</td><td>4.6%</td><td>5.0%</td></tr>
+                            <tr><td>Low</td><td>2</td><td>3.1%</td><td>3.3%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab14" class="tab-content ">
+                <h4>visit_purpose</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>Training</td><td>37</td><td>56.9%</td><td>57.8%</td></tr>
+                            <tr><td>Work</td><td>21</td><td>32.3%</td><td>32.8%</td></tr>
+                            <tr><td>Meeting</td><td>4</td><td>6.2%</td><td>6.2%</td></tr>
+                            <tr><td>Other</td><td>2</td><td>3.1%</td><td>3.1%</td></tr>
+                            <tr><td>Missing</td><td>1</td><td>1.5%</td><td>0%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab15" class="tab-content ">
+                <h4>stay_duration</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                        <tbody>
+                            <tr><td>More than 3 days</td><td>53</td><td>81.5%</td><td>81.5%</td></tr>
+                            <tr><td>2-3 days</td><td>9</td><td>13.8%</td><td>13.8%</td></tr>
+                            <tr><td>1 day</td><td>3</td><td>4.6%</td><td>4.6%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- ===== SECTION 8: LOYALTY INDICATORS ===== -->
+        <div class="section">
+            <h2>8. Loyalty Indicators</h2>
+            
+            <div class="chart-grid">
+                <div class="chart-card full-width">
+                    <img src="charts/chart_loyalty.png" alt="Loyalty">
+                    <div class="caption">Return Intent and Recommendation Rates</div>
+                </div>
+            </div>
+
+            <h3>8.a Willingness to Return</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                    <tbody>
+                        <tr><td>Yes</td><td>57</td><td>87.7%</td><td>96.6%</td></tr>
+                        <tr><td>Missing</td><td>6</td><td>9.2%</td><td>10.2%</td></tr>
+                        <tr><td>No</td><td>1</td><td>1.5%</td><td>1.7%</td></tr>
+                        <tr><td>Maybe</td><td>1</td><td>1.5%</td><td>1.7%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>8.b Willingness to Recommend</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
+                    <tbody>
+                        <tr><td>Yes</td><td>60</td><td>92.3%</td><td>98.4%</td></tr>
+                        <tr><td>Missing</td><td>4</td><td>6.2%</td><td>6.6%</td></tr>
+                        <tr><td>No</td><td>1</td><td>1.5%</td><td>1.6%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+        <!-- ===== SECTION 9: RECOMMENDATIONS ===== -->
+        <div class="section">
+            <h2>9. Recommendations</h2>
+            <div class="report-text">
+                <p>Based on the survey findings, the following recommendations are proposed:</p>
+                <br>
+                <h4>1. IMPROVE WATER AND BATHROOM FACILITIES (Priority #1)</h4>
+                <ul>
+                    <li>This area received the lowest satisfaction score</li>
+                    <li>Consider upgrading plumbing infrastructure</li>
+                    <li>Ensure consistent hot water supply</li>
+                    <li>Improve water pressure and bathroom cleanliness</li>
+                </ul>
+                <br>
+                <h4>2. ENHANCE Wi-Fi AND COMMUNICATION SERVICES (Priority #2)</h4>
+                <ul>
+                    <li>Second lowest satisfaction area</li>
+                    <li>Invest in better internet infrastructure</li>
+                    <li>Ensure reliable connectivity throughout the facility</li>
+                </ul>
+                <br>
+                <h4>3. IMPROVE PROBLEM RESOLUTION SPEED</h4>
+                <ul>
+                    <li>Guests reported delays in getting issues addressed</li>
+                    <li>Implement a faster response system</li>
+                    <li>Train staff on urgent issue handling</li>
+                </ul>
+                <br>
+                <h4>4. ADDRESS ELECTRICITY AND BASIC SERVICES</h4>
+                <ul>
+                    <li>Ensure consistent power supply</li>
+                    <li>Install backup generators for outages</li>
+                    <li>Regular maintenance of electrical systems</li>
+                </ul>
+                <br>
+                <h4>5. MAINTAIN STRENGTHS (High-Performing Areas)</h4>
+                <ul>
+                    <li>Continue current practices in <strong>Environmental Safety & Security</strong></li>
+                    <li>Continue current practices in <strong>Staff Respect & Courtesy</strong></li>
+                    <li>Continue current practices in <strong>Reception Speed</strong></li>
+                    <li>Maintain staff training programs</li>
+                    <li>Implement regular guest feedback to monitor ongoing satisfaction</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            <p>Liaison Office Guest House &bull; Guest Satisfaction Survey 2018 &bull; Generated: June 30, 2026</p>
+        </div>
+        
+    </div>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            // Find and activate the corresponding button
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                if (el.getAttribute('onclick').includes(tabId)) {
+                    el.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
