@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liaison Office Guest House - Complete Survey Report 2018</title>
+    <title>Raya University - Liaison Office Guest House Survey Report 2018</title>
     <style>
         :root {
-            --navy: #1F3864;
-            --blue: #4472C4;
+            --navy: #1A2A5E;
+            --gold: #C89B3C;
+            --blue: #4A7FC1;
             --light-blue: #9DC3E6;
             --green: #63BE7B;
             --light-green: #A9D18E;
@@ -16,6 +17,7 @@
             --red: #E06666;
             --grey: #595959;
             --light-grey: #f0f2f5;
+            --cream: #F5F0E6;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -26,18 +28,88 @@
         }
         .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
         
-        /* Header */
+        /* Header with Logo */
         .header {
             background: linear-gradient(135deg, var(--navy), #2a4a7a);
             color: white;
-            padding: 35px 40px;
+            padding: 25px 40px;
             border-radius: 12px;
             margin-bottom: 30px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 5px solid var(--gold);
         }
-        .header h1 { font-size: 30px; font-weight: 700; margin-bottom: 5px; }
-        .header .subtitle { font-size: 16px; opacity: 0.85; }
-        .header .date { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--gold);
+        }
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .header-logo-placeholder {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            font-family: 'Georgia', serif;
+        }
+        .header-text {
+            text-align: left;
+        }
+        .header-text .university {
+            font-size: 14px;
+            opacity: 0.8;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        .header-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 2px 0;
+        }
+        .header-text .department {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .header-text .subtitle {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+        .header-right {
+            text-align: right;
+        }
+        .header-right .date {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+        .header-right .badge-year {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 5px;
+        }
         
         /* Stats Grid */
         .stats-grid {
@@ -59,7 +131,7 @@
         .stat-card .number.green { color: var(--green); }
         .stat-card .number.orange { color: var(--orange); }
         .stat-card .number.blue { color: var(--blue); }
-        .stat-card .number.red { color: var(--red); }
+        .stat-card .number.gold { color: var(--gold); }
         
         /* Section */
         .section {
@@ -72,7 +144,7 @@
         .section h2 {
             font-size: 22px;
             color: var(--navy);
-            border-bottom: 3px solid var(--light-blue);
+            border-bottom: 3px solid var(--gold);
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -152,6 +224,7 @@
         .badge-blue { background: var(--light-blue); color: var(--navy); }
         .badge-orange { background: var(--orange); color: #333; }
         .badge-red { background: var(--red); color: white; }
+        .badge-gold { background: var(--gold); color: white; }
         
         /* Text content */
         .report-text {
@@ -171,6 +244,14 @@
             border-radius: 4px;
             margin: 10px 0;
         }
+        .highlight-box.warning {
+            background: #fff5f5;
+            border-left-color: var(--red);
+        }
+        .highlight-box.gold {
+            background: #fdf8ee;
+            border-left-color: var(--gold);
+        }
         
         /* Footer */
         .footer {
@@ -178,23 +259,14 @@
             color: #aaa;
             font-size: 12px;
             padding: 25px 0 10px 0;
-            border-top: 1px solid #e8ecf0;
+            border-top: 2px solid var(--gold);
+        }
+        .footer .university-name {
+            color: var(--navy);
+            font-weight: 600;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .chart-grid { grid-template-columns: 1fr; }
-            .header h1 { font-size: 22px; }
-            .section { padding: 15px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media print {
-            .header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            table thead th { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .stat-card { border: 1px solid #ddd; }
-        }
-        
-        /* Tabs for frequency tables */
+        /* Tabs */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -222,20 +294,72 @@
         .flex-between {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
+        }
+        .flex-between .highlight-box { flex: 1; min-width: 200px; }
+        
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .header { 
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .header-left { 
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-text { text-align: center; }
+            .header-right { text-align: center; }
+            .header h1 { font-size: 22px; }
+            .section { padding: 15px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .flex-between { flex-direction: column; }
+        }
+        @media print {
+            .header { 
+                background: var(--navy) !important; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact; 
+            }
+            table thead th { 
+                background: var(--navy) !important; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact; 
+            }
+            .stat-card { border: 1px solid #ddd; }
+            .tab-content { display: block !important; }
+            .tab-btn { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <!-- ===== HEADER ===== -->
+        <!-- ===== HEADER WITH LOGO ===== -->
         <div class="header">
-            <h1>🏨 Liaison Office Guest House</h1>
-            <div class="subtitle">Guest Satisfaction Survey Report 2018</div>
-            <div class="date">Report Generated: June 30, 2026 at 11:03 PM</div>
+            <div class="header-left">
+                <!-- LOGO PLACEHOLDER - Replace with your logo -->
+                <div class="header-logo">
+                    <!-- Option 1: Use an image file -->
+                    <!-- <img src="logo.png" alt="Raya University Logo"> -->
+                    
+                    <!-- Option 2: Use text placeholder (remove if using image) -->
+                    <span class="header-logo-placeholder">RU</span>
+                </div>
+                <div class="header-text">
+                    <div class="university">🏛️ RAYA UNIVERSITY</div>
+                    <h1>Guest Satisfaction Survey Report</h1>
+                    <div class="department">Liaison Office Guest House</div>
+                    <div class="subtitle">Complete Analysis of Guest Feedback</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="date">Report Generated: June 30, 2026 at 11:03 PM</div>
+                <div class="badge-year">Survey Year 2018</div>
+            </div>
         </div>
         
         <!-- ===== KEY METRICS ===== -->
@@ -245,11 +369,11 @@
                 <div class="label">Overall Satisfaction (out of 5)</div>
             </div>
             <div class="stat-card">
-                <div class="number blue">96.6%</div>
+                <div class="number gold">96.6%</div>
                 <div class="label">Would Return</div>
             </div>
             <div class="stat-card">
-                <div class="number blue">98.4%</div>
+                <div class="number gold">98.4%</div>
                 <div class="label">Would Recommend</div>
             </div>
             <div class="stat-card">
@@ -358,7 +482,8 @@
                     </tbody>
                 </table>
             </div>
-
+        </div>
+        
         <!-- ===== SECTION 5: VISUALIZATIONS ===== -->
         <div class="section">
             <h2>5. Visualizations</h2>
@@ -407,13 +532,13 @@
             </div>
             
             <div class="flex-between">
-                <div class="highlight-box" style="flex:1;margin-right:10px;">
+                <div class="highlight-box gold">
                     <strong>🏆 Top Performing Areas:</strong><br>
                     • Environmental Safety & Security: 4.74/5.0<br>
                     • Staff Respect & Courtesy: 4.66/5.0<br>
                     • Reception Speed: 4.65/5.0<br>
                 </div>
-                <div class="highlight-box" style="flex:1;background:#fff5f5;border-left-color:var(--red);">
+                <div class="highlight-box warning">
                     <strong>⚠️ Areas for Improvement:</strong><br>
                     • Liaison Staff Capacity: 4.08/5.0<br>
                     • Overall Service: 4.05/5.0<br>
@@ -429,22 +554,23 @@
             
             <div class="tabs">
                 <button class="tab-btn active" onclick="showTab('tab0')">Reception Speed</button>
-                <button class="tab-btn " onclick="showTab('tab1')">Staff Respect & Courtesy</button>
-                <button class="tab-btn " onclick="showTab('tab2')">Information Clarity</button>
-                <button class="tab-btn " onclick="showTab('tab3')">Hospitality</button>
-                <button class="tab-btn " onclick="showTab('tab4')">Room Cleanliness</button>
-                <button class="tab-btn " onclick="showTab('tab5')">Bed & Furniture Quality</button>
-                <button class="tab-btn " onclick="showTab('tab6')">Water & Bathroom Service</button>
-                <button class="tab-btn " onclick="showTab('tab7')">Electricity & Basic Services</button>
-                <button class="tab-btn " onclick="showTab('tab8')">Environmental Safety & Security</button>
-                <button class="tab-btn " onclick="showTab('tab9')">Cleaning Service</button>
-                <button class="tab-btn " onclick="showTab('tab10')">Wi-Fi & Communication</button>
-                <button class="tab-btn " onclick="showTab('tab11')">Problem Resolution Speed</button>
-                <button class="tab-btn " onclick="showTab('tab12')">Overall Service</button>
-                <button class="tab-btn " onclick="showTab('tab13')">Liaison Staff Capacity</button>
-                <button class="tab-btn " onclick="showTab('tab14')">visit_purpose</button>
-                <button class="tab-btn " onclick="showTab('tab15')">stay_duration</button>
+                <button class="tab-btn" onclick="showTab('tab1')">Staff Respect</button>
+                <button class="tab-btn" onclick="showTab('tab2')">Info Clarity</button>
+                <button class="tab-btn" onclick="showTab('tab3')">Hospitality</button>
+                <button class="tab-btn" onclick="showTab('tab4')">Room Cleanliness</button>
+                <button class="tab-btn" onclick="showTab('tab5')">Bed Quality</button>
+                <button class="tab-btn" onclick="showTab('tab6')">Water & Bathroom</button>
+                <button class="tab-btn" onclick="showTab('tab7')">Electricity</button>
+                <button class="tab-btn" onclick="showTab('tab8')">Environment Safety</button>
+                <button class="tab-btn" onclick="showTab('tab9')">Cleaning Service</button>
+                <button class="tab-btn" onclick="showTab('tab10')">Wi-Fi</button>
+                <button class="tab-btn" onclick="showTab('tab11')">Problem Resolution</button>
+                <button class="tab-btn" onclick="showTab('tab12')">Overall Service</button>
+                <button class="tab-btn" onclick="showTab('tab13')">Liaison Staff</button>
+                <button class="tab-btn" onclick="showTab('tab14')">Visit Purpose</button>
+                <button class="tab-btn" onclick="showTab('tab15')">Stay Duration</button>
             </div>
+            
             <div id="tab0" class="tab-content active">
                 <h4>Reception Speed</h4>
                 <div class="table-wrapper">
@@ -459,7 +585,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab1" class="tab-content ">
+            
+            <div id="tab1" class="tab-content">
                 <h4>Staff Respect & Courtesy</h4>
                 <div class="table-wrapper">
                     <table>
@@ -473,7 +600,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab2" class="tab-content ">
+            
+            <div id="tab2" class="tab-content">
                 <h4>Information Clarity</h4>
                 <div class="table-wrapper">
                     <table>
@@ -486,7 +614,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab3" class="tab-content ">
+            
+            <div id="tab3" class="tab-content">
                 <h4>Hospitality</h4>
                 <div class="table-wrapper">
                     <table>
@@ -499,7 +628,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab4" class="tab-content ">
+            
+            <div id="tab4" class="tab-content">
                 <h4>Room Cleanliness</h4>
                 <div class="table-wrapper">
                     <table>
@@ -513,7 +643,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab5" class="tab-content ">
+            
+            <div id="tab5" class="tab-content">
                 <h4>Bed & Furniture Quality</h4>
                 <div class="table-wrapper">
                     <table>
@@ -528,7 +659,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab6" class="tab-content ">
+            
+            <div id="tab6" class="tab-content">
                 <h4>Water & Bathroom Service</h4>
                 <div class="table-wrapper">
                     <table>
@@ -543,7 +675,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab7" class="tab-content ">
+            
+            <div id="tab7" class="tab-content">
                 <h4>Electricity & Basic Services</h4>
                 <div class="table-wrapper">
                     <table>
@@ -557,7 +690,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab8" class="tab-content ">
+            
+            <div id="tab8" class="tab-content">
                 <h4>Environmental Safety & Security</h4>
                 <div class="table-wrapper">
                     <table>
@@ -571,7 +705,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab9" class="tab-content ">
+            
+            <div id="tab9" class="tab-content">
                 <h4>Cleaning Service</h4>
                 <div class="table-wrapper">
                     <table>
@@ -586,7 +721,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab10" class="tab-content ">
+            
+            <div id="tab10" class="tab-content">
                 <h4>Wi-Fi & Communication</h4>
                 <div class="table-wrapper">
                     <table>
@@ -602,7 +738,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab11" class="tab-content ">
+            
+            <div id="tab11" class="tab-content">
                 <h4>Problem Resolution Speed</h4>
                 <div class="table-wrapper">
                     <table>
@@ -616,7 +753,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab12" class="tab-content ">
+            
+            <div id="tab12" class="tab-content">
                 <h4>Overall Service</h4>
                 <div class="table-wrapper">
                     <table>
@@ -631,7 +769,8 @@
                     </table>
                 </div>
             </div>
-            <div id="tab13" class="tab-content ">
+            
+            <div id="tab13" class="tab-content">
                 <h4>Liaison Staff Capacity</h4>
                 <div class="table-wrapper">
                     <table>
@@ -647,8 +786,9 @@
                     </table>
                 </div>
             </div>
-            <div id="tab14" class="tab-content ">
-                <h4>visit_purpose</h4>
+            
+            <div id="tab14" class="tab-content">
+                <h4>Visit Purpose</h4>
                 <div class="table-wrapper">
                     <table>
                         <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
@@ -662,8 +802,9 @@
                     </table>
                 </div>
             </div>
-            <div id="tab15" class="tab-content ">
-                <h4>stay_duration</h4>
+            
+            <div id="tab15" class="tab-content">
+                <h4>Stay Duration</h4>
                 <div class="table-wrapper">
                     <table>
                         <thead><tr><th>Response</th><th>Count</th><th>Percent</th><th>Valid %</th></tr></thead>
@@ -675,7 +816,6 @@
                     </table>
                 </div>
             </div>
-
         </div>
         
         <!-- ===== SECTION 8: LOYALTY INDICATORS ===== -->
@@ -713,7 +853,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
         
         <!-- ===== SECTION 9: RECOMMENDATIONS ===== -->
@@ -764,19 +903,17 @@
         
         <!-- ===== FOOTER ===== -->
         <div class="footer">
-            <p>Liaison Office Guest House &bull; Guest Satisfaction Survey 2018 &bull; Generated: June 30, 2026</p>
+            <p><span class="university-name">Raya University</span> &bull; Liaison Office Guest House &bull; Guest Satisfaction Survey 2018</p>
+            <p>Generated: June 30, 2026</p>
         </div>
         
     </div>
     
     <script>
         function showTab(tabId) {
-            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            // Show selected tab
             document.getElementById(tabId).classList.add('active');
-            // Find and activate the corresponding button
             document.querySelectorAll('.tab-btn').forEach(el => {
                 if (el.getAttribute('onclick').includes(tabId)) {
                     el.classList.add('active');
